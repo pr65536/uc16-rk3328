@@ -1,0 +1,8 @@
+rkbin/
+u-boot/
+kernel/
+snap/
+*.snap
+*.img
+*.img.xz
+

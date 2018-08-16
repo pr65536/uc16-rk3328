@@ -1,0 +1,11 @@
+{
+  "type": "model",
+  "authority-id": "BJ2UonHl8Z0SOZ4zP53PnoKwNG1puKmb",
+  "brand-id": "BJ2UonHl8Z0SOZ4zP53PnoKwNG1puKmb",
+  "series": "16",
+  "model": "rock64",
+  "architecture": "arm64",
+  "gadget": "rock64",
+  "kernel": "rock64-kernel",
+  "timestamp": "2018-07-08T12:45:59+00:00"
+}

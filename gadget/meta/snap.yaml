@@ -1,0 +1,8 @@
+name: rock64
+version: 16.04-1.5
+summary: Rock64 support package
+description: |
+ Support files for booting Rock64
+type: gadget
+architectures:
+    - arm64

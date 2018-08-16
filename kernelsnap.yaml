@@ -1,0 +1,37 @@
+name: rock64-kernel
+version: 4.4.0
+summary: A roseapple kernel built from source
+description: This is the reference kernel from xapp-le branch Ubuntu-Snappy-Core
+type: kernel
+
+parts:
+    kernel:
+        plugin: kernel
+        source: .
+        source-branch: 4.4.132-1062-rockchip-ayufan 
+        source-type: git
+        kdefconfig: [rockchip_linux_defconfig]
+        kconfigs:
+            - CONFIG_LOCALVERSION="-rock64"
+            - CONFIG_DEBUG_INFO=n
+            - CONFIG_SQUASHFS=m
+            - CONFIG_SQUASHFS_XZ=y
+            - CONFIG_DEVPTS_MULTIPLE_INSTANCES=y
+            - CONFIG_SECURITY=y
+            - CONFIG_SECURITY_APPARMOR=y
+            - CONFIG_DEFAULT_SECURITY_APPARMOR=y
+            - CONFIG_ENCRYPTED_KEYS=y
+            - CONFIG_SQUASHFS_XATTR=y
+            - CONFIG_AUTOFS4_FS=y
+            - CONFIG_CC_STACKPROTECTOR=y
+            - CONFIG_CC_STACKPROTECTOR_STRONG=y
+            - CONFIG_BLK_DEV_LOOP=y
+            - CONFIG_BLK_DEV_LOOP_MIN_COUNT=8
+            - CONFIG_PLATFORM_UBUNTU=y
+            - CONFIG_DEBUG_FS=y
+        kernel-initrd-modules:
+            - squashfs
+        kernel-image-target: Image
+        kernel-device-trees:
+            - rockchip/rk3328-rock64
+        build-packages: [bc, kmod, cpio]
