@@ -13,8 +13,7 @@ distclean: clean
 	rm -rf $(wildcard $(KERNEL_SRC))
 	
 build:
-	if [ ! -d $(KERNEL_SRC) ] ; then git clone $(KERNEL_REPO) -b $(KERNEL_BRANCH) kernel; fi
-	cp $(KERNEL_SRC)/../kernelsnap.yaml $(KERNEL_SRC)/snapcraft.yaml
+	if [ ! -d $(KERNEL_SRC) ]; then git clone $(KERNEL_REPO) -b $(KERNEL_BRANCH) kernel; cd $(KERNEL_SRC); git apply ../patches/kernel/000*.patch; fi
 	cd $(KERNEL_SRC); snapcraft --target-arch arm64 snap
 	cp $(KERNEL_SRC)/$(KERNEL_SNAP) $(OUTPUT_DIR)
 	

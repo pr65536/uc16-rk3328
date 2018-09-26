@@ -11,16 +11,34 @@ To build all parts, a couple of dependencies are required. On Ubuntu you can ins
 
 ```bash
 sudo apt-get update
+sudo apt-get install swig libpython-dev python
 sudo apt-get install -y build-essential u-boot-tools lzop debootstrap gcc-aarch64-linux-gnu device-tree-compiler
-sudo apt-get install -y ubuntu-snappy snapcraft pxz
+sudo apt-get install -y git ubuntu-snappy snapcraft pxz
 sudo apt-get install -y snap
-sudo snap install --beta --edge ubuntu-image
+sudo snap install --classic --edge ubuntu-image
 ```
 
 Generate ssh key-pair if you did not have one
 
 ```bash
 ssh-keygen -t rsa
+```
+
+Create Model assertion
+
+1. Signup for ubuntu SSO.
+   https://login.ubuntu.com/+login
+2. Import an SSH Key into your Ubuntu SSO account.
+3. Model assertion of model
+   https://docs.ubuntu.com/core/en/guides/build-device/image-building.html
+   e.g rock64-model.json
+4. Sign your model. it will generate signed model file.
+   cat rock64-model.json | snap sign -k default &> rock64.model
+   e.g rock64.model
+
+First, make sure you have Ubuntu One SSO and ability to get 2nd factor from Authenticator, then execute the following command:
+```bash
+snapcraft login
 ```
 
 ## Quick Build

@@ -3,9 +3,9 @@ include common.mk
 SNAPPY_VERSION := `date +%Y%m%d`-0
 SNAPPY_IMAGE := uc16-rock64-${SNAPPY_VERSION}.img
 # yes for latest version; no for the specific revision of edge/stable channel
-SNAPPY_CORE_NEW := yes
+SNAPPY_CORE_NEW := no
 SNAPPY_CORE_VER ?=
-SNAPPY_CORE_CH := beta #stable
+SNAPPY_CORE_CH := stable #beta
 GADGET_VERSION := `cat gadget/meta/snap.yaml | grep version: | awk '{print $$2}'`
 GADGET_SNAP := rock64_$(GADGET_VERSION)_arm64.snap
 KERNEL_SNAP_VERSION := `cat $(KERNEL_SRC)/prime/meta/snap.yaml | grep version: | awk '{print $$2}'`
@@ -22,6 +22,7 @@ distclean: clean
 
 build-snappy:
 ifeq ($(SNAPPY_CORE_NEW),no)
+		@echo "build core version..."
 		$(eval REVISION = --revision $(SNAPPY_CORE_VER))
 endif
 	@echo "build snappy..."
